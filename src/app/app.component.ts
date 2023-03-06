@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'adminpro';
+
+
+  sumar = (a: number, b: number) => {
+    return new Promise((resolve, reject) => {
+
+      if (b === 0) {
+        console.log('lanza error');
+        
+        reject('hay errorh')
+      } else {
+
+        resolve(a + b);
+      }
+      console.log('aqui');
+      
+    })
+  }
 }

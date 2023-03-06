@@ -1,31 +1,32 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
-describe('AppComponent', () => {
+let fixture: ComponentFixture<AppComponent>;
+let appComponent: AppComponent;
+
+fdescribe('AppComponent', () => {
   beforeEach(async () => {
+    
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      imports: [
+        RouterModule
+      ]
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    appComponent = fixture.componentInstance;
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(appComponent).toBeTruthy();
   });
 
-  it(`should have as title 'adminpro'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('adminpro');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('adminpro app is running!');
+  it('debe sumar', async () => {
+    const sumar = await appComponent.sumar(4, 0);
+    expect(sumar).toEqual(9);
   });
 });
